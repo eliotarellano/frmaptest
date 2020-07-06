@@ -22,6 +22,11 @@ export default () => {
     },
   ]
 
+  const boundaries = [
+    [23.621047, 14.967527],
+    [30.621047, 14.967527],
+  ]
+
   return (
     <div>
       <Map
@@ -31,6 +36,7 @@ export default () => {
         }}
         center={[23.621047, 14.967527]}
         style="mapbox://styles/eliotarellano/ckcarkht43fwy1il83c4al87h"
+        fitBounds={boundaries}
       >
         {markers.map(marker => (
           <Marker
