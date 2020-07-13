@@ -50,7 +50,7 @@ export default () => {
     {
       name: "Test A",
       amount: 400,
-      line: 400,
+      line: 100,
     },
     {
       name: "Test B",
@@ -65,42 +65,42 @@ export default () => {
     {
       name: "Test D",
       amount: 278,
-      line: 278,
+      line: 400,
     },
     {
       name: "Test E",
       amount: 189,
-      line: 189,
+      line: 200,
     },
     {
       name: "Test F",
       amount: 239,
-      line: 239,
+      line: 100,
     },
     {
       name: "Test G",
       amount: 349,
-      line: 349,
+      line: 400,
     },
     {
       name: "Test H",
       amount: 278,
-      line: 278,
+      line: 300,
     },
     {
       name: "Test I",
       amount: 189,
-      line: 189,
+      line: 130,
     },
     {
       name: "Test J",
       amount: 239,
-      line: 239,
+      line: 230,
     },
     {
       name: "Test K",
       amount: 349,
-      line: 349,
+      line: 330,
     },
   ]
 
@@ -235,7 +235,13 @@ export default () => {
               wrapperStyle={{ ...styles.wrapperStyle, lineHeight: "12pt" }}
             />
             <Legend wrapperStyle={{ color: "#FFFFFF" }} />
-            <Bar dataKey="amount" barSize={30} fill="url(#gradient)" />
+            <Bar
+              dataKey="amount"
+              stackId="a"
+              barSize={30}
+              fill="url(#gradient)"
+            />
+            <Bar dataKey="line" stackId="a" barSize={30} fill="#d5ebff" />
             <Line type="monotone" dataKey="line" stroke="#d5ebff" />
           </ComposedChart>
         </div>
