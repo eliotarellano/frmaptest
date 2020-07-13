@@ -9,6 +9,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ComposedChart,
+  Line,
 } from "recharts"
 
 export default () => {
@@ -48,51 +50,105 @@ export default () => {
     {
       name: "Test A",
       amount: 400,
+      line: 400,
     },
     {
       name: "Test B",
       amount: 300,
+      line: 300,
     },
     {
       name: "Test C",
       amount: 200,
+      line: 200,
     },
     {
       name: "Test D",
       amount: 278,
+      line: 278,
     },
     {
       name: "Test E",
       amount: 189,
+      line: 189,
     },
     {
       name: "Test F",
       amount: 239,
+      line: 239,
     },
     {
       name: "Test G",
       amount: 349,
+      line: 349,
     },
     {
       name: "Test H",
       amount: 278,
+      line: 278,
     },
     {
       name: "Test I",
       amount: 189,
+      line: 189,
     },
     {
       name: "Test J",
       amount: 239,
+      line: 239,
     },
     {
       name: "Test K",
       amount: 349,
+      line: 349,
     },
   ]
 
+  const styles = {
+    font: {
+      fontFamily: "Raleway,Calibre,Arial,sans-serif",
+      fontSize: ".9rem",
+      marginTop: "2.2rem",
+      fontWeight: "500",
+      lineHeight: "1rem",
+    },
+    container: {
+      marginTop: 20,
+      fontSize: 14,
+    },
+    title: {
+      color: "#ffffff",
+    },
+    chartStyle: {
+      padding: 30,
+      backgroundColor: "rgba(10, 27, 45, 0.5)",
+      paddingBottom: 0,
+    },
+    margin: {
+      top: 10,
+      right: 10,
+      bottom: 10,
+      left: 10,
+    },
+    cursor: {
+      fill: "rgb(33, 50, 67, 0.6)",
+    },
+    wrapperStyle: {
+      backgroundColor: "rgb(40, 59, 78, 0.9)",
+      padding: 14,
+      paddingBottom: 0,
+      border: "0.5px solid",
+      borderImage: "linear-gradient(180deg, #56eeff, #6c48dc) 0.5",
+    },
+    contentStyle: {
+      backgroundColor: "transparent",
+      border: 0,
+      color: "#FFFFFF",
+    },
+  }
+
   return (
-    <div style={{ fontFamily: "Raleway', Calibre, Arial, sans-serif" }}>
+    <div style={{ ...styles.font }}>
       <div>
         <Map
           containerStyle={{
@@ -124,19 +180,20 @@ export default () => {
           ))}
         </Map>
       </div>
-      <div style={{ marginTop: 20, fontSize: 14 }}>
-        <div>
+      <div style={{ ...styles.container }}>
+        <div style={{ ...styles.title }}>
           <h4>BARCHAR TEST</h4>
         </div>
 
-        <div
-          style={{
-            padding: 30,
-            backgroundColor: "rgba(10, 27, 45, 0.5)",
-            paddingBottom: 0,
-          }}
-        >
-          <BarChart width={840} height={250} data={data}>
+        <div style={{ ...styles.chartStyle }}>
+          <BarChart
+            width={840}
+            height={250}
+            data={data}
+            margin={{
+              ...styles.margin,
+            }}
+          >
             <defs>
               <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#56eeff" stopOpacity={0.8} />
@@ -147,23 +204,40 @@ export default () => {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip
-              cursor={{ fill: "transparent" }}
-              contentStyle={{
-                backgroundColor: "transparent",
-                border: 0,
-                color: "#FFFFFF",
-              }}
-              wrapperStyle={{
-                backgroundColor: "rgb(40, 59, 78, 0.9)",
-                padding: 14,
-                paddingBottom: 0,
-                border: "0.5px solid",
-                borderImage: "linear-gradient(180deg, #56eeff, #6c48dc) 0.5",
-              }}
+              cursor={{ ...styles.cursor }}
+              contentStyle={{ ...styles.contentStyle }}
+              wrapperStyle={{ ...styles.wrapperStyle }}
             />
             <Legend wrapperStyle={{ color: "#FFFFFF" }} />
-            <Bar dataKey="amount" fill="url(#gradient)" />
+            <Bar dataKey="amount" barSize={30} fill="url(#gradient)" />
           </BarChart>
+        </div>
+      </div>
+      <div style={{ ...styles.container }}>
+        <div style={{ ...styles.title }}>
+          <h4>BARCHAR LINE TEST</h4>
+        </div>
+
+        <div style={{ ...styles.chartStyle }}>
+          <ComposedChart
+            width={840}
+            height={250}
+            data={data}
+            margin={{
+              ...styles.margin,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip
+              contentStyle={{ ...styles.contentStyle }}
+              wrapperStyle={{ ...styles.wrapperStyle, lineHeight: "12pt" }}
+            />
+            <Legend wrapperStyle={{ color: "#FFFFFF" }} />
+            <Bar dataKey="amount" barSize={30} fill="url(#gradient)" />
+            <Line type="monotone" dataKey="line" stroke="#d5ebff" />
+          </ComposedChart>
         </div>
       </div>
     </div>
