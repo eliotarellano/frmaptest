@@ -11,6 +11,7 @@ import {
   Legend,
   ComposedChart,
   Line,
+  ReferenceLine,
 } from "recharts"
 
 export default () => {
@@ -209,6 +210,7 @@ export default () => {
               wrapperStyle={{ ...styles.wrapperStyle }}
             />
             <Legend wrapperStyle={{ color: "#FFFFFF" }} />
+            <ReferenceLine y={200} stroke={"#ea4f34"} />
             <Bar dataKey="amount" barSize={30} fill="url(#gradient)" />
           </BarChart>
         </div>
@@ -235,6 +237,7 @@ export default () => {
               wrapperStyle={{ ...styles.wrapperStyle, lineHeight: "12pt" }}
             />
             <Legend wrapperStyle={{ color: "#FFFFFF" }} />
+            <ReferenceLine y={400} stroke={"#ea4f34"} />
             <Bar
               dataKey="amount"
               stackId="a"
